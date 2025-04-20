@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph ABC Index Calculator</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Edge List Input</h2>
+            <textarea id="edgeListInput" placeholder="Enter vertices and edges (e.g.:)
+v1
+v2
+v3
+v1 v2 e1
+v2 v3 e2"></textarea>
+            <button id="parseButton">Parse Edge List</button>
+            <button id="calculateABC">Calculate ABC Index</button>
+            <button id="clearGraph">Clear Graph</button>
+            <div id="result">
+                <h3>ABC Index: <span id="abcResult">-</span></h3>
+                <div id="calculationTable" style="margin-top: 20px;">
+                    <h3>Calculation Details:</h3>
+                    <table id="abcCalculations">
+                        <thead>
+                            <tr>
+                                <th>Edge</th>
+                                <th>d(u)</th>
+                                <th>d(v)</th>
+                                <th>d(u)+d(v)-2</th>
+                                <th>d(u)⋅d(v)</th>
+                                <th>Term Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="graphContainer"></div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
