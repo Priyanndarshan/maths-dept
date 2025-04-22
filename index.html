@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph ABC Index Calculator</title>
+    <title>ABC Index Calculator | Graph Theory Tool</title>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <h2>Edge List Input</h2>
-            <textarea id="edgeListInput" placeholder="Enter vertices and edges (e.g.:)
+        <div class="header">
+            <h2>ABC Index Calculator</h2>
+        </div>
+
+        <div class="input-area">
+            <div class="input-section">
+                <label for="edgeListInput">Enter Graph Data</label>
+                <textarea id="edgeListInput" placeholder="Enter vertices and edges in the following format:
+
 v1
 v2
 v3
 v1 v2 e1
-v2 v3 e2"></textarea>
-            <button id="parseButton">Parse Edge List</button>
-            <button id="calculateABC">Calculate ABC Index</button>
-            <button id="clearGraph">Clear Graph</button>
+v2 v3 e2
+
+Each vertex on a new line
+Each edge as: source target edgeLabel"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button id="parseButton">Create Graph</button>
+                <button id="calculateABC">Calculate ABC</button>
+                <button id="clearGraph">Clear All</button>
+            </div>
+        </div>
+
+        <div class="visualization-area">
+            <div id="graphContainer">
+                <div class="graph-instructions">
+                    <p>Click and drag between nodes to create edges</p>
+                </div>
+            </div>
+
             <div id="result">
-                <h3>ABC Index: <span id="abcResult">-</span></h3>
-                <div id="calculationTable" style="margin-top: 20px;">
-                    <h3>Calculation Details:</h3>
+                <h3>Results</h3>
+                <div class="result-value">
+                    <span class="label">ABC Index:</span>
+                    <span id="abcResult">-</span>
+                </div>
+                
+                <div id="calculationTable">
+                    <h4>Calculation Details</h4>
                     <table id="abcCalculations">
                         <thead>
                             <tr>
@@ -35,15 +63,12 @@ v2 v3 e2"></textarea>
                                 <th>Term Value</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div id="graphContainer"></div>
-        
     </div>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
