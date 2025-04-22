@@ -89,9 +89,12 @@ document.getElementById('parseButton').addEventListener('click', () => {
     vertexLines.forEach(line => {
         const vertex = line.trim();
         if (vertex) {
+            // Convert vertex name to lowercase for consistent handling
+            const normalizedVertex = vertex.toLowerCase();
             nodes.add({ 
-                id: vertex, 
-                label: vertex
+                id: vertex,  // Keep original case for display
+                label: vertex,
+                normalizedId: normalizedVertex  // Store normalized version for matching
             });
         }
     });
@@ -101,11 +104,14 @@ document.getElementById('parseButton').addEventListener('click', () => {
     edgeLines.forEach(line => {
         const parts = line.trim().split(' ');
         if (parts.length >= 2) {
-            const [from, to, label] = parts;
+            const [fromRaw, toRaw, label] = parts;
+            // Find nodes with case-insensitive matching
+            const fromNode = Array.from(nodes.get()).find(n => n.normalizedId === fromRaw.toLowerCase())?.id || fromRaw;
+            const toNode = Array.from(nodes.get()).find(n => n.normalizedId === toRaw.toLowerCase())?.id || toRaw;
             edges.add({ 
-                from: from, 
-                to: to, 
-                id: label || `${from}-${to}`, 
+                from: fromNode, 
+                to: toNode, 
+                id: label || `${fromNode}-${toNode}`, 
                 label: label || '' 
             });
         }
